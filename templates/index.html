@@ -1,70 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Flight Delay Prediction</title>
-  </head>
-  <body>
+</head>
+<body>
     <h1>Flight Delay Prediction</h1>
-    <h2>hello</h2>
     <form id="flight-form">
-      <label for="airline">Airline:</label><br />
-      <input type="text" id="airline" name="airline" value="us" /><br />
-      <label for="flight">Flight:</label><br />
-      <input type="text" id="flight" name="flight" value="sdfsdf" /><br />
-      <label for="airportfrom">Airport From:</label><br />
-      <input
-        type="text"
-        id="airportfrom"
-        name="airportfrom"
-        value="bwi"
-      /><br />
-      <label for="airportto">Airport To:</label><br />
-      <input type="text" id="airportto" name="airportto" value="clt" /><br />
-      <label for="dayofweek">Day of Week:</label><br />
-      <input type="number" id="dayofweek" name="dayofweek" value="4" /><br />
-      <label for="time">Time:</label><br />
-      <input type="number" id="time" name="time" value="325" /><br />
-      <label for="length">Length:</label><br />
-      <input type="number" id="length" name="length" value="83" /><br /><br />
-      <input type="submit" value="Predict" />
+        <label for="airline">Airline:</label><br>
+        <input type="text" id="airline" name="airline" value="us"><br>
+        <label for="flight">Flight:</label><br>
+        <input type="text" id="flight" name="flight" value="sdfsdf"><br>
+        <label for="airportfrom">Airport From:</label><br>
+        <input type="text" id="airportfrom" name="airportfrom" value="bwi"><br>
+        <label for="airportto">Airport To:</label><br>
+        <input type="text" id="airportto" name="airportto" value="clt"><br>
+        <label for="dayofweek">Day of Week:</label><br>
+        <input type="number" id="dayofweek" name="dayofweek" value="4"><br>
+        <label for="time">Time:</label><br>
+        <input type="number" id="time" name="time" value="325"><br>
+        <label for="length">Length:</label><br>
+        <input type="number" id="length" name="length" value="83"><br><br>
+        <input type="submit" value="Predict">
     </form>
     <div id="result"></div>
     <script>
-      document
-        .getElementById("flight-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          var airline = document.getElementById("airline").value;
-          var flight = document.getElementById("flight").value;
-          var airportfrom = document.getElementById("airportfrom").value;
-          var airportto = document.getElementById("airportto").value;
-          var dayofweek = document.getElementById("dayofweek").value;
-          var time = document.getElementById("time").value;
-          var length = document.getElementById("length").value;
-          var data = {
-            id: 100,
-            airline: airline,
-            flight: flight,
-            airportfrom: airportfrom,
-            airportto: airportto,
-            dayofweek: dayofweek,
-            time: time,
-            length: length,
-          };
-          fetch("/predict", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              document.getElementById(
-                "result"
-              ).innerText = `Delay Probability: ${data.delay_probability}, Delay: ${data.delay}`;
+        document.getElementById('flight-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var airline = document.getElementById('airline').value;
+            var flight = document.getElementById('flight').value;
+            var airportfrom = document.getElementById('airportfrom').value;
+            var airportto = document.getElementById('airportto').value;
+            var dayofweek = document.getElementById('dayofweek').value;
+            var time = document.getElementById('time').value;
+            var length = document.getElementById('length').value;
+            var data = {
+                'id': 100,
+                'airline': airline,
+                'flight': flight,
+                'airportfrom': airportfrom,
+                'airportto': airportto,
+                'dayofweek': dayofweek,
+                'time': time,
+                'length': length
+            };
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Delay Probability: ${data.delay_probability}, Delay: ${data.delay}`;
             });
         });
     </script>
-  </body>
+</body>
 </html>
