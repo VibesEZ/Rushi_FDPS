@@ -1,27 +1,128 @@
 <!DOCTYPE html>
 <html>
+    <title>Airline-delay-Prediction App</title>
 <head>
-    <title>Flight Delay Prediction</title>
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .back-video {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+      h1 {
+        color: #150000;
+        text-align: center;
+        
+      }
+      select,
+      input {
+        padding: 6px;
+        margin: 5px;
+        width: 103%;
+        box-sizing: border-box;
+      }
+      label {
+        display: block;
+        margin: 6px 6px;
+        font-size: 19px;
+      }
+      button {
+        padding: 7px;
+        background-color: #ffffff;
+        color: #110707;
+        border: none;
+        border-radius: 3px;
+        border-color: #110707;
+        cursor: pointer;
+        margin: auto;
+        display: block;
+        box-sizing: border-box;
+      }
+      
+    </style>
 </head>
 <body>
-    <h1>Flight Delay Prediction</h1>
+    <video autoplay loop muted plays-inline class="back-video">
+        <source src="video3.mp4" type="video/mp4">
+    </video>
+    <h1>Sky Prophet Web Applicaion</h1>
     <form id="flight-form">
-        <label for="airline">Airline:</label><br>
-        <input type="text" id="airline" name="airline" value="us"><br>
-        <label for="flight">Flight:</label><br>
-        <input type="text" id="flight" name="flight" value="sdfsdf"><br>
-        <label for="airportfrom">Airport From:</label><br>
-        <input type="text" id="airportfrom" name="airportfrom" value="bwi"><br>
-        <label for="airportto">Airport To:</label><br>
-        <input type="text" id="airportto" name="airportto" value="clt"><br>
-        <label for="dayofweek">Day of Week:</label><br>
-        <input type="number" id="dayofweek" name="dayofweek" value="4"><br>
-        <label for="time">Time:</label><br>
-        <input type="number" id="time" name="time" value="325"><br>
-        <label for="length">Length:</label><br>
-        <input type="number" id="length" name="length" value="83"><br><br>
-        <input type="submit" value="Predict">
+        <div>
+            <label for="airline">Select Airline</label>
+            <select id="airline" name="airline">
+                <option value="CO">CO</option>
+                <option value="US">US</option>
+                <option value="AA">AA</option>
+                <option value="AS">AS</option>
+              </select>
+        
+        
+        <label for="flight">Select Flight</label>
+        <select id="flight" name="flight">
+            <option value="269">269</option>
+            <option value="1558">1558</option>
+            <option value="2400">2400</option>
+            <option value="108">108</option>
+          </select>
+
+        <label for="airportfrom">Airport From</label>
+        <select id="airportfrom" name="airportfrom">
+            <option value="SFO">SFO</option>
+            <option value="PHX">PHX</option>
+            <option value="LAX">LAX</option>
+            <option value="ANC">ANC</option>
+          </select>
+
+        <label for="airportto">Airport To</label>
+        <select id="airportto" name="airportto">
+            <option value="IAH">IAH</option>
+            <option value="CLT">CLT</option>
+            <option value="DFW">DFW</option>
+            <option value="SEA">SEA</option>
+          </select>
+
+        <label for="dayofweek">Day of Week</label>
+        <select id="time" name="time">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+
+        <label for="time">Time</label>
+        <select id="time" name="time">
+            <option value="15">15</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
+
+        <label for="length">Length</label>
+        <select id="length" name="length">
+            <option value="205">205</option>
+            <option value="222">222</option>
+            <option value="165">165</option>
+            <option value="202">202</option>
+          </select>
+
+        <button type="submit" value="predict">Predict</button>
     </form>
+</div>
     <div id="result"></div>
     <script>
         document.getElementById('flight-form').addEventListener('submit', function(e) {
