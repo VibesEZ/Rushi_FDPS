@@ -1,0 +1,52 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.back-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+h1 {
+    color: #150000;
+    text-align: center;
+}
+
+select,
+input {
+    padding: 6px;
+    margin: 5px;
+    width: 103%;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin: 6px 6px;
+    font-size: 19px;
+}
+
+button {
+    padding: 7px;
+    background-color: #ffffff;
+    color: #110707;
+    border: none;
+    border-radius: 3px;
+    border-color: #110707;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    box-sizing: border-box;
+}
