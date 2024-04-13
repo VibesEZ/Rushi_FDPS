@@ -71,42 +71,8 @@
         </div>
     </form>
     <div id="result"></div>
-    <script>
-        document.getElementById('flight-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var airline = document.getElementById('airline').value;
-            var flight = document.getElementById('flight').value;
-            var airportfrom = document.getElementById('airportfrom').value;
-            var airportto = document.getElementById('airportto').value;
-            var dayofweek = document.getElementById('dayofweek').value;
-            var time = document.getElementById('time').value;
-            var length = document.getElementById('length').value;
-            var data = {
-                'id': 100,
-                'airline': airline,
-                'flight': flight,
-                'airportfrom': airportfrom,
-                'airportto': airportto,
-                'dayofweek': dayofweek,
-                'time': time,
-                'length': length
-            };
-            fetch('/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('result').innerHTML = `
-            <p>Delay Probability: ${data.delay_probability}</p>
-            <p>Delay: ${data.delay}</p>
-        `;
-                });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
 </body>
 
 </html>
