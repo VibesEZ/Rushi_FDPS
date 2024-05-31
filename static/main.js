@@ -24,11 +24,19 @@ document.getElementById('flight-form').addEventListener('submit', function (e) {
             return response.json();
         })
         .then(data => {
-            document.getElementById('result').innerHTML = `
-            <p>Delay Probability: ${data.delay_probability}</p>
-            <p>Delay: ${data.delay}</p>
-        `;
+            let resultText = "";
+            if (data.delay) {
+                resultText = `
+                <p>Flight Delay - Ohh No! Your flight is delayed. Sit back and relax till then.</p>
+              `;
+            } else {
+                resultText = `
+                <p>Woah! Your flight is on time! Enjoy your journey!</p>
+              `;
+            }
+            document.getElementById('result').innerHTML = resultText;
         })
+
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
             // Handle/display the error to the user
